@@ -1,12 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const connectDB = require('./database');
 const path = require('path');
 
 // Load env vars
 dotenv.config();
 
 // Connect to database
+connectDB();
 
 const app = express();
 
@@ -21,9 +23,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/issues', require('./routes/issues'));
-app.use('/api/admin', require('./routes/admin'));
+app.use('/api/auth', require('./auth'));
+app.use('/api/issues', require('./issues'));
+app.use('/api/admin', require('./admin'));
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -95,6 +97,4 @@ process.on('unhandledRejection', (err, promise) => {
     });
 });
 
-
 module.exports = app;
-
