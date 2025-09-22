@@ -7,7 +7,6 @@ const path = require('path');
 dotenv.config();
 
 // Connect to database
-connectDB();
 
 const app = express();
 
@@ -98,3 +97,4 @@ process.on('unhandledRejection', (err, promise) => {
 
 
 module.exports = app;
+
