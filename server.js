@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const connectDB = require('./config/database');
 const path = require('path');
 
 // Load env vars
@@ -96,5 +95,6 @@ process.on('unhandledRejection', (err, promise) => {
         process.exit(1);
     });
 });
+
 
 module.exports = app;
